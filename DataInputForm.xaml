@@ -8,8 +8,8 @@
         Title="Ввод анализируемых данных" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="data_table" HorizontalAlignment="Left" Height="280" Margin="10,129,0,0" VerticalAlignment="Top" Width="772"/>
-        <Label Content="Сначала тут будут отображены красивые кнопушки, принажатии на которые загружаются данные и отображается таблица" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
-        <Button x:Name="btn_excel" Content="Excel" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="145" Height="51" Click="btn_excel_Click"/>
+        <Label Content="Апдейт. Здесь будет отображена ОДНА кнопушка, которая отвечает за ввод любых данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+        <Button x:Name="btn_input" Content="Ввод данных" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="145" Height="51" Click="btnFileInputClick"/>
 
     </Grid>
 </Window>
