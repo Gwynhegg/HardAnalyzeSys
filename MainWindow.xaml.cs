@@ -23,6 +23,7 @@ namespace HardAnalyzeSys
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Проверка изменений");
         }
     }
 }
