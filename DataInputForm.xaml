@@ -1,0 +1,15 @@
+﻿<Window x:Class="HardAnalyzeSys.DataInputForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HardAnalyzeSys"
+        mc:Ignorable="d"
+        Title="Ввод анализируемых данных" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="data_table" HorizontalAlignment="Left" Height="280" Margin="10,129,0,0" VerticalAlignment="Top" Width="772"/>
+        <Label Content="Сначала тут будут отображены красивые кнопушки, принажатии на которые загружаются данные и отображается таблица" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
+        <Button x:Name="btn_excel" Content="Excel" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="145" Height="51" Click="btn_excel_Click"/>
+
+    </Grid>
+</Window>

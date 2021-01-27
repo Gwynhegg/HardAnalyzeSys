@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HardAnalyzeSys
@@ -23,7 +22,12 @@ namespace HardAnalyzeSys
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine("Проверка изменений");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataInputForm new_dif = new DataInputForm();
+            new_dif.Show();
         }
     }
 }
