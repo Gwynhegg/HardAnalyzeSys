@@ -7,6 +7,8 @@ using System.Data;
 using System.IO;
 using ExcelDataReader;
 using Newtonsoft.Json;
+using System.Data.OleDb;
+
 
 namespace HardAnalyzeSys
 {
@@ -37,6 +39,9 @@ namespace HardAnalyzeSys
                 case ".csv": source_table = customInput(filename, new char[] {','}); break;
                 case ".json": source_table = jsonInput(filename); break;
                 case ".xml": source_table = xmlInput(filename); break;
+                case ".mdb": 
+                case ".accdb": source_table = accessInput(filename); break;
+
                 default: try {
                         source_table = customInput(filename, new char[] { ',', ';', '\t' });
                     }
@@ -121,12 +126,13 @@ namespace HardAnalyzeSys
             FileStream stream = File.Open(filename, FileMode.Open, FileAccess.Read);
             IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
             ExcelDataSetConfiguration conf = new ExcelDataSetConfiguration
-                {
+            {
                 ConfigureDataTable = _ => new ExcelDataTableConfiguration
-                    {
-                        UseHeaderRow = true
-                    }
-                };
+                {
+                    UseHeaderRow = true
+                }
+            };
+
             try
             {
                 DataSet dataset = reader.AsDataSet(conf);
@@ -137,6 +143,49 @@ namespace HardAnalyzeSys
                 MessageBox.Show("Возникла ошибка при считывании данных из Excel. Убедитесь в корректности входных данных");
                 return null;
             }  
+        }
+
+        private DataTable accessInput(string filename)
+        {
+           string connectString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename;
+
+
+            // создаем экземпляр класса OleDbConnection
+            var myConnection = new OleDbConnection(connectString);
+
+            // открываем соединение с БД
+            myConnection.Open();
+
+            //решил не подключать целую библиотеку. Считываем название табилцы
+            string tableName = Microsoft.VisualBasic.Interaction.InputBox("Введите название таблицы", "Название таблицы");
+
+            // текст запроса
+            string query = "SELECT * FROM " + tableName;
+
+            // создаем объект OleDbCommand для выполнения запроса к БД MS Access
+            
+            OleDbCommand command = new OleDbCommand(query, myConnection);
+            try
+            {
+                OleDbDataReader reader = command.ExecuteReader();
+
+                DataTable dataTable = reader.GetSchemaTable();
+
+                myConnection.Close();
+
+                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                myConnection.Close();
+
+                return null;
+            }
+            
+
+
+
         }
     }
 }
