@@ -165,24 +165,21 @@ namespace HardAnalyzeSys
             // создаем объект OleDbCommand для выполнения запроса к БД MS Access
             
             OleDbCommand command = new OleDbCommand(query, myConnection);
-            try
-            {
-                OleDbDataReader reader = command.ExecuteReader();
 
-                DataTable dataTable = reader.GetSchemaTable();
 
-                myConnection.Close();
 
-                return dataTable;
-            }
-            catch (Exception)
-            {
 
-                myConnection.Close();
+            OleDbDataReader reader = command.ExecuteReader();
 
-                return null;
-            }
-            
+            DataSet dataSet = new DataSet();
+
+            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter();
+            oleDbDataAdapter.Fill(dataSet);
+            myConnection.Close();
+
+            return dataSet.Tables[0];
+
+
 
 
 
