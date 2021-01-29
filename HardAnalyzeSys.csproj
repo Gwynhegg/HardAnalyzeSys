@@ -47,6 +47,7 @@
     <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -98,6 +99,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataEntities\BasicDataEntity.cs" />
+    <Compile Include="DataEntities\DataStructures\DataRecord.cs" />
+    <Compile Include="DataEntities\DataStructures\TableStructure.cs" />
     <Compile Include="DataEntities\Interfaces\DataDisplay.cs" />
     <Compile Include="DataEntities\Interfaces\DataEntity.cs" />
     <Compile Include="DataEntities\Interfaces\DataRepresentation.cs" />
@@ -143,6 +146,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataEntities\DataDisplays\" />
+    <Folder Include="DataEntities\DataRepresentations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

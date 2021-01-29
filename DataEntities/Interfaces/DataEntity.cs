@@ -8,6 +8,8 @@ namespace HardAnalyzeSys.DataEntities
 {
     interface DataEntity
     {
-
+        void createDataStructure();
+        void setDataDisplay();
+        void addDataRepresentation();
     }
 }

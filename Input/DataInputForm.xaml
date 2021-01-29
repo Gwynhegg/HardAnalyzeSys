@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardAnalyzeSys"
         mc:Ignorable="d"
-        Title="Ввод анализируемых данных" Height="481" Width="800">
-    <Grid>
+        Title="Ввод анализируемых данных" Height="498" Width="800">
+    <Grid Margin="0,0,0,-11">
         <DataGrid x:Name="data_table" HorizontalAlignment="Left" Height="280" Margin="10,129,0,0" VerticalAlignment="Top" Width="772">
         </DataGrid>
         <Label Content="Апдейт. Здесь будет отображена ОДНА кнопушка, которая отвечает за ввод любых данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>

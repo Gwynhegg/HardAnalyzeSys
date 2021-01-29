@@ -11,5 +11,20 @@ namespace HardAnalyzeSys.DataEntities
         private List<DataRepresentation> data_representations;
         private DataStructure data_structure;
         private DataDisplay displayed_type;
+
+        public void addDataRepresentation()
+        {
+            return;
+        }
+
+        public void createDataStructure()
+        {
+            return;
+        }
+
+        public void setDataDisplay()
+        {
+            return;
+        }
     }
 }

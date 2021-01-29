@@ -28,7 +28,7 @@ namespace HardAnalyzeSys
 
         private void btnInputData(object sender, RoutedEventArgs e)
         {
-            DataInputForm new_dif = new DataInputForm();
+            DataInputForm new_dif = new DataInputForm(this);
             new_dif.ShowDialog();
         }
 
@@ -39,7 +39,8 @@ namespace HardAnalyzeSys
 
         public void enterBasicData(DataEntities.BasicDataEntity data)
         {
-            data_objects.Add(data);
+            //Здесь происходит добавление элемента с данными на форму
+            //data_objects.Add(data);
             //Также здесь следует отобразить значок данных
         }
     }
