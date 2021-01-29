@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardAnalyzeSys"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Главная страница" Height="450" Width="800">
     <Grid>
-        <Button Content="Загрузка данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="170" Height="65" Click="Button_Click"/>
+        <Button Content="Загрузка данных" HorizontalAlignment="Left" Margin="369,104,0,0" VerticalAlignment="Top" Width="170" Height="65" Click="btnInputData"/>
+        <Label Content="Только после инициализации проекта" HorizontalAlignment="Left" Margin="22,104,0,0" VerticalAlignment="Top" Width="328" Height="65"/>
+        <Button x:Name="btn_create_project" Content="Button" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="btnCreateProject"/>
 
     </Grid>
 </Window>

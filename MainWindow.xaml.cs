@@ -19,15 +19,28 @@ namespace HardAnalyzeSys
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<DataEntities.DataEntity> data_objects;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnInputData(object sender, RoutedEventArgs e)
         {
             DataInputForm new_dif = new DataInputForm();
-            new_dif.Show();
+            new_dif.ShowDialog();
+        }
+
+        private void btnCreateProject(object sender, RoutedEventArgs e)
+        {
+            data_objects = new List<DataEntities.DataEntity>();
+        }
+
+        public void enterBasicData(DataEntities.BasicDataEntity data)
+        {
+            data_objects.Add(data);
+            //Также здесь следует отобразить значок данных
         }
     }
 }

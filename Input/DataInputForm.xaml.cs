@@ -49,6 +49,7 @@ namespace HardAnalyzeSys
 
             try
             {
+                data_table.ItemsSource = null;
                 data_table.ItemsSource = source_table.AsDataView();
             }
             catch
@@ -137,6 +138,38 @@ namespace HardAnalyzeSys
                 MessageBox.Show("Возникла ошибка при считывании данных из Excel. Убедитесь в корректности входных данных");
                 return null;
             }  
+        }
+
+        private void btnСreateClick(object sender, RoutedEventArgs e)
+        {
+            Input.CreationParams new_table_form = new Input.CreationParams(this);
+            new_table_form.ShowDialog();
+        }
+
+        public void getParamsAndCreate(int num_of_params, int num_of_elements)
+        {
+            DataTable source_table = new DataTable();
+            for (int i = 0; i < num_of_params; i++) source_table.Columns.Add("param" + (i + 1));
+            for (int j = 0; j < num_of_elements; j++) source_table.Rows.Add(source_table.NewRow());
+            try
+            {
+                data_table.ItemsSource = null;
+                data_table.ItemsSource = source_table.AsDataView();
+            }
+            catch
+            {
+                MessageBox.Show("Возникла ошибка при выводе данных на форму");
+            }
+        }
+
+        private void btnAddParameter(object sender, RoutedEventArgs e)
+        {
+            data_table.Columns.Add(new DataGridTextColumn() { Header = "param" + data_table.Columns.Count });
+        }
+
+        private void btnCreateObject(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

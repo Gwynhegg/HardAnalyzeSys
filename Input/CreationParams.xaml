@@ -1,0 +1,17 @@
+﻿<Window x:Class="HardAnalyzeSys.Input.CreationParams"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HardAnalyzeSys.Input"
+        mc:Ignorable="d"
+        Title="Параметры таблицы" Height="153.719" Width="356.198">
+    <Grid Margin="0,0,0,-2">
+        <Label Content="Количество параметров" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="204"/>
+        <Label Content="Количество элементов" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="204"/>
+        <TextBox x:Name="edit_params" HorizontalAlignment="Left" Height="26" Margin="219,10,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="120" GotFocus="edit_params_GotFocus"/>
+        <TextBox x:Name="edit_elements" HorizontalAlignment="Left" Height="26" Margin="219,41,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="120" GotFocus="edit_elements_GotFocus"/>
+        <Button x:Name="btn_create" Content="Создать" HorizontalAlignment="Left" Margin="219,72,0,0" VerticalAlignment="Top" Width="119" Height="45" Click="btnCreateTable"/>
+
+    </Grid>
+</Window>

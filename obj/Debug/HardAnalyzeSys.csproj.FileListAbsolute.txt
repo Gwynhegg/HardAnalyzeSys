@@ -30,13 +30,10 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\ExcelDataReader.pdb
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\ExcelDataReader.xml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\ExcelDataReader.DataSet.pdb
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\ExcelDataReader.DataSet.xml
-F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache
-F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataInputForm.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\MainWindow.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\App.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys_MarkupCompile.cache
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys_MarkupCompile.lref
-F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataInputForm.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\MainWindow.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.g.resources
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.Properties.Resources.resources
@@ -59,3 +56,8 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\System.Numerics.Vectors.x
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\System.Threading.Tasks.Extensions.xml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\Newtonsoft.Json.dll
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache
