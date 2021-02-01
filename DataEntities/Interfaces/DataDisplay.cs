@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HardAnalyzeSys.DataEntities
 {
-    interface DataDisplay
+    public interface DataDisplay //В РАЗРАБОТКЕ
     {
     }
 }

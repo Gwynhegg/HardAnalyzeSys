@@ -17,14 +17,15 @@ namespace HardAnalyzeSys
     public partial class DataInputForm : Window
     {
 
-        private MainWindow parent_window;
-        public DataInputForm(MainWindow parent)
+        private MainWindow parent_window;       //окно-родитель для последующей передачи дата-объекта
+        private DataTable source_table;     //таблица для хранения значений
+        public DataInputForm(MainWindow parent)     //конструктор запоминает окно-родителя
         {
             parent_window = parent;
             InitializeComponent();
         }
 
-        private void btnFileInputClick(object sender, RoutedEventArgs e)
+        private void btnFileInputClick(object sender, RoutedEventArgs e)        //метод, обрабатывающий разные варианты ввода данных
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog(); //Открываем диалоговое окно
             dialog.Filter = "Excel files (.xls*)|*.xls*|.CSV files (.csv)|*.csv|.JSON Files (.json)|*.json|.XML Files (.xml)|*.xml|" +
@@ -34,7 +35,7 @@ namespace HardAnalyzeSys
             if (result == true) filename = dialog.FileName;
             if (filename == "") return;
 
-            DataTable source_table = null;
+            source_table = null;
             switch (Path.GetExtension(filename)) {
                 case ".xls":
                 case ".xlsm":
@@ -65,7 +66,7 @@ namespace HardAnalyzeSys
             }
         }
 
-        private DataTable xmlInput(string filename)
+        private DataTable xmlInput(string filename)     //Ввод данных через .XML
         {
            XmlTextReader reader = new XmlTextReader(filename);
             DataSet data_set = new DataSet();
@@ -82,7 +83,7 @@ namespace HardAnalyzeSys
             }
         }
 
-        private DataTable customInput(string filename, char[] separators)
+        private DataTable customInput(string filename, char[] separators)       //Ввод данных ручками
         {
             DataTable data_table = new DataTable();
             StreamReader stream_reader = new StreamReader(filename);
@@ -107,7 +108,7 @@ namespace HardAnalyzeSys
             }
         }
 
-        private DataTable jsonInput(string filename)
+        private DataTable jsonInput(string filename)        //Ввод данных через .JSON
         {
             StreamReader stream_reader = new StreamReader(filename);
             string json = stream_reader.ReadToEnd();
@@ -124,7 +125,7 @@ namespace HardAnalyzeSys
 
         }
 
-        private DataTable excelInput(string filename)
+        private DataTable excelInput(string filename)       //Ввод данных через Excel
         {
             FileStream stream = File.Open(filename, FileMode.Open, FileAccess.Read);
             IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
@@ -181,13 +182,13 @@ namespace HardAnalyzeSys
             }  
         }
 
-        private void btnСreateClick(object sender, RoutedEventArgs e)
+        private void btnСreateClick(object sender, RoutedEventArgs e)       //вызов формы для создания новой таблицы
         {
             Input.CreationParams new_table_form = new Input.CreationParams(this);
             new_table_form.ShowDialog();
         }
 
-        public void getParamsAndCreate(int num_of_params, int num_of_elements)
+        public void getParamsAndCreate(int num_of_params, int num_of_elements)      //получение параметров таблицы и ее создание
         {
             DataTable source_table = new DataTable();
             for (int i = 0; i < num_of_params; i++) source_table.Columns.Add("param" + (i + 1));
@@ -203,15 +204,19 @@ namespace HardAnalyzeSys
             }
         }
 
-        private void btnAddParameter(object sender, RoutedEventArgs e)
+        private void btnAddParameter(object sender, RoutedEventArgs e)      //метод для добавления параметра в таблицу
         {
             data_table.Columns.Add(new DataGridTextColumn() { Header = "param" + data_table.Columns.Count });
         }
 
-        private void btnCreateObject(object sender, RoutedEventArgs e)
+        private void btnCreateObject(object sender, RoutedEventArgs e)      //Создание экземпляра дата-объекта и установка всех необходимых параметров
         {
+            DataEntities.BasicDataEntity basic_data = new DataEntities.BasicDataEntity();
+            basic_data.createDataStructure(source_table);
+
             //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
             //Преобразовать данные из таблицы в массивы и передать
+            parent_window.enterBasicData(basic_data);
             this.Close();
         }
     }

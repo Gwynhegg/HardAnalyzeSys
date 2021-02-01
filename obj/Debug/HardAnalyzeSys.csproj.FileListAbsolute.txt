@@ -60,4 +60,3 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.baml
-F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache

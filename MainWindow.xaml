@@ -9,7 +9,7 @@
     <Grid>
         <Button Content="Загрузка данных" HorizontalAlignment="Left" Margin="369,104,0,0" VerticalAlignment="Top" Width="170" Height="65" Click="btnInputData"/>
         <Label Content="Только после инициализации проекта" HorizontalAlignment="Left" Margin="22,104,0,0" VerticalAlignment="Top" Width="328" Height="65"/>
-        <Button x:Name="btn_create_project" Content="Button" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="btnCreateProject"/>
+        <Button x:Name="btn_create_project" Content="Новый проект" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="btnCreateProject"/>
         <DataGrid x:Name="check" HorizontalAlignment="Left" Height="100" Margin="104,258,0,0" VerticalAlignment="Top" Width="607"/>
 
     </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,19 +29,23 @@ namespace HardAnalyzeSys
 
         private void btnInputData(object sender, RoutedEventArgs e)
         {
-            DataInputForm new_dif = new DataInputForm(this);
+            DataInputForm new_dif = new DataInputForm(this);        //создание и вызов формы ввода данных
             new_dif.ShowDialog();
         }
 
         private void btnCreateProject(object sender, RoutedEventArgs e)
         {
-            data_objects = new List<DataEntities.DataEntity>();
+            data_objects = new List<DataEntities.DataEntity>();     //инициализация списка дата-объектов
         }
 
         public void enterBasicData(DataEntities.BasicDataEntity data)
         {
-            //Здесь происходит добавление элемента с данными на форму
-            //data_objects.Add(data);
+            data_objects.Add(data);     //дата-объект из окна ввода добавляется на главную форму
+
+            //ПРОВЕРКА
+            DataEntities.DataStructure temp = data.extractDataStructure();
+            for (int i = 0; i < temp.sizeOfStructure(); i++) for (int j = 0; j < temp[i].sizeOfSet(); j++) Console.WriteLine(temp[i][j] + " ");
+            check.ItemsSource = ((DataEntities.DataRepresentations.Table)data.GetDataRepresentations()[0]).GetDataTable().AsDataView();
             //Также здесь следует отобразить значок данных
         }
     }

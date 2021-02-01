@@ -99,6 +99,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataEntities\BasicDataEntity.cs" />
+    <Compile Include="DataEntities\DataRepresentations\Table.cs" />
     <Compile Include="DataEntities\DataStructures\DataRecord.cs" />
     <Compile Include="DataEntities\DataStructures\TableStructure.cs" />
     <Compile Include="DataEntities\Interfaces\DataDisplay.cs" />
@@ -149,7 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataEntities\DataDisplays\" />
-    <Folder Include="DataEntities\DataRepresentations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
