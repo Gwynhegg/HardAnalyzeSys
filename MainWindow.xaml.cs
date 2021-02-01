@@ -38,17 +38,15 @@ namespace HardAnalyzeSys
             data_objects = new List<DataEntities.DataEntity>();     //инициализация списка дата-объектов
         }
 
+        private void btnCloseProgram(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         public void enterBasicData(DataEntities.BasicDataEntity data)
         {
             data_objects.Add(data);     //дата-объект из окна ввода добавляется на главную форму
-
-            //ПРОВЕРКА
-            DataEntities.DataStructure temp = data.extractDataStructure();      //получение дата-структуры
-
             grid_window.Children.Add(data.displayIcon(60, 60));       //отображение контроллера
-            for (int i = 0; i < temp.sizeOfStructure(); i++) for (int j = 0; j < temp[i].sizeOfSet(); j++) Console.WriteLine(temp[i][j] + " ");
-            check.ItemsSource = ((DataEntities.DataRepresentations.Table)data.GetDataRepresentations()[0]).GetDataTable().AsDataView();
-            //Также здесь следует отобразить значок данных
         }
     }
 }

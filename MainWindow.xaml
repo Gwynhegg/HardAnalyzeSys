@@ -7,11 +7,21 @@
         mc:Ignorable="d"
         Title="Главная страница" Height="450" Width="800">
     <Grid x:Name="grid_window">
-        <Button Content="Загрузка данных" HorizontalAlignment="Left" Margin="369,104,0,0" VerticalAlignment="Top" Width="170" Height="65" Click="btnInputData"/>
-        <Label Content="Только после инициализации проекта" HorizontalAlignment="Left" Margin="22,104,0,0" VerticalAlignment="Top" Width="328" Height="65"/>
-        <Button x:Name="btn_create_project" Content="Новый проект" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="btnCreateProject"/>
-        <DataGrid x:Name="check" HorizontalAlignment="Left" Height="100" Margin="104,290,0,0" VerticalAlignment="Top" Width="607"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="104,169,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="btn_create_project" Content="ТЫК! Новый проект" HorizontalAlignment="Left" Margin="0,43,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="btnCreateProject"/>
+        <Menu x:Name="main_menu" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="178" Background="#FFEE1717">
+            <MenuItem Background="White" Header="Меню">
+                <MenuItem Header="Новый проект" Click="btnCreateProject"/>
+                <Separator/>
+                <MenuItem Header="Выйти" Click="btnCloseProgram"/>
+            </MenuItem>
+            <MenuItem Header="пункт1"/>
+            <MenuItem Header="пункт2"/>
+            <MenuItem Header="пункт3"/>
+            <MenuItem Header="пункт4" Background="#FF1CF94E"/>
+        </Menu>
+        <ToolBar Height="38" Margin="180,0,0,0" VerticalAlignment="Top" Background="#FF0F76EC">
+            <Button Content="Импорт данных" Background="White" Click="btnInputData" />
+        </ToolBar>
 
     </Grid>
 </Window>

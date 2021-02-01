@@ -10,15 +10,16 @@ namespace HardAnalyzeSys.DataEntities
 {
     public class BasicDataEntity : DataEntity
     {
+        private string entity_name;
         private List<DataRepresentation> data_representations;      //тут хранятся представления данных
         private DataStructure data_structure;       //тут хранится структура данных
         private DataDisplay displayed_type;     //вспомогательное поле для отображения
-        private List<Interfaces.DataQuantities> data_quantities;        //тут хранится лист с вычисленными статистическими величинами.
+        private Dictionary<(string,string), double> data_quantities;        //тут хранится словарь с вычисляемыми величинами. Для удобства и скорости будем хранить в виде ЗАПРОС (название величины) - ЗНАЧЕНИЕ
 
         public BasicDataEntity()
         {
             data_representations = new List<DataRepresentation>();      //инициализация списка представлений
-            data_quantities = new List<Interfaces.DataQuantities>();        //инициализация списка статистических величин
+            data_quantities = new Dictionary<(string,string), double>();       //инициализация списка статистических величин
         }
 
         public void addDataRepresentation(DataRepresentation data_representation)       //метод для добавления представления в список
@@ -38,6 +39,7 @@ namespace HardAnalyzeSys.DataEntities
                 data_structure.addRecords(new_record);
             }
         }
+
 
         public DataStructure extractDataStructure()     //геттер для структуры данных
         {
@@ -64,6 +66,36 @@ namespace HardAnalyzeSys.DataEntities
         public Image displayIcon(int left, int top)
         {
             return displayed_type.getDisplayedImage(left, top);
+        }
+
+        public void calculateStatValue(string name_of_value, string parameter, int field_id) //ПОКА ЧТО ТОЛЬКО ДЛЯ DOUBLE значений УКАЗАННЫХ ПОЛЕЙ
+        {
+            if (!data_quantities.ContainsKey((name_of_value, parameter)))
+            {
+                double[] temporal_array = new double[data_structure.sizeOfStructure()];
+                for (int i = 0; i < temporal_array.Length; i++) temporal_array[i] = (Double)data_structure[i][field_id];
+                data_quantities.Add((name_of_value, parameter), StatLibrary.Calculate(name_of_value, temporal_array));
+            }
+        }
+
+        public Dictionary<(string, string), double> getAllStatistic()
+        {
+            return data_quantities;
+        }
+
+        public double getStatValue(string name_of_value, string parameter)
+        {
+            if (data_quantities.ContainsKey((name_of_value, parameter))) return data_quantities[(name_of_value, parameter)]; else return -1;
+        }
+
+        public void setEntityName(string name)
+        {
+            this.entity_name = name;
+        }
+
+        public string getEntityName()
+        {
+            return entity_name;
         }
     }
 }

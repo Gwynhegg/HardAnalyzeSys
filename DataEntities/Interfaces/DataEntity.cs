@@ -16,5 +16,11 @@ namespace HardAnalyzeSys.DataEntities
         void addDataRepresentation(DataRepresentation data_representation);     //добавить одно представление в список сущности
 
         List<DataRepresentation> GetDataRepresentations();      //получить список для отображения на форме (графики и пр.)
+
+        void calculateStatValue(string name_of_value, string parameter, int field_id);
+        Dictionary<(string, string), double> getAllStatistic();
+        double getStatValue(string name_of_value, string parameter);
+        void setEntityName(string name);
+        string getEntityName();
     }
 }

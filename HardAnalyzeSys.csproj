@@ -86,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ElementForm\Element.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Input\CreationParams.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,9 +109,12 @@
     <Compile Include="DataEntities\DataStructures\TableStructure.cs" />
     <Compile Include="DataEntities\Interfaces\DataDisplay.cs" />
     <Compile Include="DataEntities\Interfaces\DataEntity.cs" />
-    <Compile Include="DataEntities\Interfaces\DataQuantities.cs" />
     <Compile Include="DataEntities\Interfaces\DataRepresentation.cs" />
     <Compile Include="DataEntities\Interfaces\DataStructure.cs" />
+    <Compile Include="DataEntities\StatLibrary.cs" />
+    <Compile Include="ElementForm\Element.xaml.cs">
+      <DependentUpon>Element.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Input\CreationParams.xaml.cs">
       <DependentUpon>CreationParams.xaml</DependentUpon>
     </Compile>
@@ -153,5 +160,6 @@
   <ItemGroup>
     <Resource Include="inputfile.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
