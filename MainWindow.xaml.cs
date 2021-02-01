@@ -43,10 +43,9 @@ namespace HardAnalyzeSys
             data_objects.Add(data);     //дата-объект из окна ввода добавляется на главную форму
 
             //ПРОВЕРКА
-            DataEntities.DataStructure temp = data.extractDataStructure();
+            DataEntities.DataStructure temp = data.extractDataStructure();      //получение дата-структуры
 
-            //ПРОБЛЕМЫ С ОТОБРАЖЕНИЕМ ИКОНОК
-            check_image = data.displayIcon();
+            grid_window.Children.Add(data.displayIcon(60, 60));       //отображение контроллера
             for (int i = 0; i < temp.sizeOfStructure(); i++) for (int j = 0; j < temp[i].sizeOfSet(); j++) Console.WriteLine(temp[i][j] + " ");
             check.ItemsSource = ((DataEntities.DataRepresentations.Table)data.GetDataRepresentations()[0]).GetDataTable().AsDataView();
             //Также здесь следует отобразить значок данных

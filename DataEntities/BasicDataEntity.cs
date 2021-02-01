@@ -61,9 +61,9 @@ namespace HardAnalyzeSys.DataEntities
             return;
         }
 
-        public Image displayIcon()
+        public Image displayIcon(int left, int top)
         {
-            return displayed_type.getDisplayedImage();
+            return displayed_type.getDisplayedImage(left, top);
         }
     }
 }

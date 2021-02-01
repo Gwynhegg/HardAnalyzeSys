@@ -9,6 +9,6 @@ namespace HardAnalyzeSys.DataEntities
 {
     public interface DataDisplay //В РАЗРАБОТКЕ
     {
-        Image getDisplayedImage();
+        Image getDisplayedImage(int left, int top);
     }
 }
