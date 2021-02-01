@@ -44,6 +44,9 @@ namespace HardAnalyzeSys
 
             //ПРОВЕРКА
             DataEntities.DataStructure temp = data.extractDataStructure();
+
+            //ПРОБЛЕМЫ С ОТОБРАЖЕНИЕМ ИКОНОК
+            check_image = data.displayIcon();
             for (int i = 0; i < temp.sizeOfStructure(); i++) for (int j = 0; j < temp[i].sizeOfSet(); j++) Console.WriteLine(temp[i][j] + " ");
             check.ItemsSource = ((DataEntities.DataRepresentations.Table)data.GetDataRepresentations()[0]).GetDataTable().AsDataView();
             //Также здесь следует отобразить значок данных

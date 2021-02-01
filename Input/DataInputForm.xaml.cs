@@ -190,7 +190,7 @@ namespace HardAnalyzeSys
 
         public void getParamsAndCreate(int num_of_params, int num_of_elements)      //получение параметров таблицы и ее создание
         {
-            DataTable source_table = new DataTable();
+            source_table = new DataTable();
             for (int i = 0; i < num_of_params; i++) source_table.Columns.Add("param" + (i + 1));
             for (int j = 0; j < num_of_elements; j++) source_table.Rows.Add(source_table.NewRow());
             try
