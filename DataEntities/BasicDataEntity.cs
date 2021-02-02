@@ -53,18 +53,18 @@ namespace HardAnalyzeSys.DataEntities
         }
 
         //ОПРЕДЕЛИТЬ
-        public DataDisplay GetDataDisplay()
+        public DataDisplay GetDataDisplay()     
         {
             return null;
         }
 
         //ОПРЕДЕЛИТЬ
-        public void setDataDisplay(DataDisplay display)
+        public void setDataDisplay(DataDisplay display)     //сеттер для отображения на случай смены иконки и т.д.
         {
             return;
         }
 
-        public DataDisplays.CustomControl displayIcon(int left, int top)
+        public DataDisplays.CustomControl displayIcon(int left, int top)        //возвращаем кастомный элемент отображения на форму
         {
             return displayed_type.getDisplayedImage(left, top);
         }
@@ -79,22 +79,22 @@ namespace HardAnalyzeSys.DataEntities
             }
         }
 
-        public Dictionary<(string, string), double> getAllStatistic()
+        public Dictionary<(string, string), double> getAllStatistic()       //получение вссех статистических величин
         {
             return data_quantities;
         }
 
-        public double getStatValue(string name_of_value, string parameter)
+        public double getStatValue(string name_of_value, string parameter)      //получение определенной стат. величины по имени и параметру
         {
             if (data_quantities.ContainsKey((name_of_value, parameter))) return data_quantities[(name_of_value, parameter)]; else return -1;
         }
 
-        public void setEntityName(string name)
+        public void setEntityName(string name)      //сеттер имени элемента данных
         {
             this.entity_name = name;
         }
 
-        public string getEntityName()
+        public string getEntityName()       //геттер имени элемента данных
         {
             return entity_name;
         }

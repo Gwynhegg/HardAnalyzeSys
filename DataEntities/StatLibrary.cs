@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HardAnalyzeSys.DataEntities
 {
-    public static class StatLibrary
+    public static class StatLibrary     //библиотека для вычисления статистических величин. Классика. В дальнейшем можно улучшать методы и оптимизировать код
     {
         public static double Calculate(string value, double[] data_set)
         {
