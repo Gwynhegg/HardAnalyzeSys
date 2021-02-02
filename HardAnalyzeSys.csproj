@@ -86,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DataEntities\DataDisplays\CustomControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ElementForm\Element.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +107,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataEntities\BasicDataEntity.cs" />
+    <Compile Include="DataEntities\DataDisplays\CustomControl.xaml.cs">
+      <DependentUpon>CustomControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataEntities\DataDisplays\InputFileDisplay.cs" />
     <Compile Include="DataEntities\DataRepresentations\Table.cs" />
     <Compile Include="DataEntities\DataStructures\DataRecord.cs" />
@@ -160,6 +167,8 @@
   <ItemGroup>
     <Resource Include="inputfile.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="DataEntities\DataDisplays\inputfile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

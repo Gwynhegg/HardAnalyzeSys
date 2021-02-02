@@ -60,6 +60,9 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\CreationParams.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\Input\DataInputForm.baml
-F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ElementForm\Element.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ElementForm\Element.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataEntities\DataDisplays\CustomControl.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataEntities\DataDisplays\CustomControl.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache

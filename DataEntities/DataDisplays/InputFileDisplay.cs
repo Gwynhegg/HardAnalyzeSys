@@ -12,24 +12,33 @@ namespace HardAnalyzeSys.DataEntities.DataDisplays
 {
     public class InputFileDisplay : DataDisplay //Сюда планируется также добавлять обработчик событий
     {
-        private Image display_image;
+        private CustomControl cust_control;
+        DataEntity reference_entity;
 
-        public InputFileDisplay()
+        public InputFileDisplay(DataEntity entity)
         {
-            display_image = new Image();
+            cust_control = new CustomControl();
+
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri("inputfile.png", UriKind.Relative);
             bitmap.EndInit();
-            display_image.Width = 100; display_image.Height = 100;
-            display_image.Stretch = System.Windows.Media.Stretch.Fill;
-            display_image.Source = bitmap;
+            cust_control.image.Source = bitmap;
+            cust_control.image.MouseDown += toDataElementForm;
+
+            cust_control.name.Content = entity.getEntityName();
+            reference_entity = entity;
         }
 
-        public Image getDisplayedImage(int left, int top)
+        private void toDataElementForm(object sender, EventArgs e)
         {
-            display_image.Margin = new System.Windows.Thickness(left, top, 0, 0);
-            return display_image;
+            ElementForm.Element new_dataform = new ElementForm.Element(reference_entity);
+            new_dataform.Show();
+        } 
+        public CustomControl getDisplayedImage(int left, int top)
+        {
+            cust_control.Margin = new System.Windows.Thickness(left, top, 0, 0);
+            return cust_control;
         }
     }
 }

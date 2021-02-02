@@ -29,9 +29,10 @@ namespace HardAnalyzeSys.DataEntities
 
         public void createDataStructure(DataTable data)     //Создание базовой структуры данных
         {
+            entity_name = "Default";
             data_structure = new DataStructures.TableStructure();       //Создается структура
             this.addDataRepresentation(new DataRepresentations.Table(data));        //Задается базовое табличное представление
-            displayed_type = new DataDisplays.InputFileDisplay();
+            displayed_type = new DataDisplays.InputFileDisplay(this);
             //ДОБАВИТЬ ПРОВЕРКУ КОРРЕКТНОСТИ ДАННЫХ
             foreach (DataRow row in data.Rows)      //переносим данные с таблицы в созданную структуру
             { 
@@ -63,7 +64,7 @@ namespace HardAnalyzeSys.DataEntities
             return;
         }
 
-        public Image displayIcon(int left, int top)
+        public DataDisplays.CustomControl displayIcon(int left, int top)
         {
             return displayed_type.getDisplayedImage(left, top);
         }

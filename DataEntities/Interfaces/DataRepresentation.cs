@@ -10,5 +10,6 @@ namespace HardAnalyzeSys.DataEntities
     public interface DataRepresentation     //В РАЗРАБОТКЕ
     {
         void setDataTable(DataTable table);
+        DataTable getDataTable();
     }
 }

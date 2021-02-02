@@ -48,5 +48,6 @@ namespace HardAnalyzeSys
             data_objects.Add(data);     //дата-объект из окна ввода добавляется на главную форму
             grid_window.Children.Add(data.displayIcon(60, 60));       //отображение контроллера
         }
+
     }
 }

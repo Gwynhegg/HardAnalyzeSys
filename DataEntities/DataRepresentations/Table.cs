@@ -19,9 +19,10 @@ namespace HardAnalyzeSys.DataEntities.DataRepresentations
             this.table = table;
         }
 
-        public DataTable GetDataTable()     //геттер для таблицы
+        public DataTable getDataTable()     //геттер для таблицы
         {
             return table;
         }
+
     }
 }

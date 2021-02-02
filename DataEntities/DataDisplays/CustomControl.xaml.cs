@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
 
-namespace HardAnalyzeSys.ElementForm
+namespace HardAnalyzeSys.DataEntities.DataDisplays
 {
     /// <summary>
-    /// Логика взаимодействия для Element.xaml
+    /// Логика взаимодействия для CustomControl.xaml
     /// </summary>
-    public partial class Element : Window
+    public partial class CustomControl : UserControl
     {
-        public Element(DataEntities.DataEntity entity) //ПОКА ЧТО В ОГРАНИЧЕННОМ ФОРМАТЕ
+        public CustomControl()
         {
             InitializeComponent();
-            entity_name.Content = entity.getEntityName();
-            entity_data.ItemsSource = entity.GetDataRepresentations()[0].getDataTable().AsDataView();
         }
     }
 }
