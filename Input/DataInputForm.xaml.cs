@@ -211,14 +211,188 @@ namespace HardAnalyzeSys
 
         private void btnCreateObject(object sender, RoutedEventArgs e)      //Создание экземпляра дата-объекта и установка всех необходимых параметров
         {
-            DataEntities.BasicDataEntity basic_data = new DataEntities.BasicDataEntity();
-            basic_data.createDataStructure(source_table);
-            basic_data.setEntityName(element_name.Text);
 
-            //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
-            //Преобразовать данные из таблицы в массивы и передать
-            parent_window.enterBasicData(basic_data);
-            this.Close();
+            if (initialCheck())     //метод для проверки таблицы на корректность
+            {
+                object[] item_array = source_table.Rows[0].ItemArray;       //попытка приведения типов
+                string[] data_types = primaryTypeCast(item_array);
+                if (secondaryTypeCast(data_types))      //попытка приведения всех элементов таблицы к единому для утверждения в корректности данных
+                {
+
+                    DataEntities.BasicDataEntity basic_data = new DataEntities.BasicDataEntity();
+                    basic_data.setEntityName(element_name.Text);
+                    basic_data.createDataStructure(source_table);
+                    basic_data.transferDataTypes(data_types);
+
+                    //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
+                    //Преобразовать данные из таблицы в массивы и передать
+                    parent_window.enterBasicData(basic_data);
+                    this.Close();
+                }
+                
+            }
+        }
+
+        private bool typeCast(string type, object value)
+        {
+            switch (type)
+            {
+                case "bool":
+                    try
+                    {
+                        if (!(value.ToString() == "true") || !(value.ToString() == "false")) throw new Exception();
+                    }
+                    catch
+                    {
+                        return false;
+                    } 
+                    break;
+                case "int":
+                    try
+                    {
+                        int temp = Int32.Parse(value.ToString());
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                    break;
+                case "double":
+                    try
+                    {
+                        double temp = Double.Parse(value.ToString().Replace('.',','));
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                    break;
+                case "string":
+                    try
+                    {
+                        string temp = Convert.ToString(value);
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                    break;
+            }
+            return true;
+        }
+
+        private bool secondaryTypeCast(string[] data_types)
+        {
+            bool flag = true;
+            AuxiliaryForms.LogForm logs = new AuxiliaryForms.LogForm();
+            for (int i = 1; i < source_table.Rows.Count; i++)
+            {
+                object[] item_array = source_table.Rows[i].ItemArray;
+                for (int j = 0; j < item_array.Length; j++)
+                {
+                    if (!typeCast(data_types[j], item_array[j])) 
+                    { 
+                        logs.addLogs("Проблема с элементом "+i+":"+j+"  - попытка приведения к "+data_types[j]);
+                        flag = false;
+                    }
+                    else
+                    {
+                        if (data_types[j] == "double") item_array[j] = item_array[j].ToString().Replace('.', ',');
+                    }
+                }
+                source_table.Rows[i].ItemArray = item_array;
+            }
+            if (!flag) logs.Show();
+            return flag;
+        }
+        private string[] primaryTypeCast(object[] items)        //читающий это, знай - мне очень стыдно за эту конструкцию
+        {
+            string[] types = new string[items.Length];
+            for (int i = 0; i < items.Length; i++)
+            {
+                try
+                {
+                    if (items[i].ToString() == "true" || items[i].ToString() == "false") types[i] = "bool"; else throw new Exception();
+                }
+                catch
+                {
+                    try
+                    {
+                        int temp = Int32.Parse(items[i].ToString());
+                        types[i] = "int";
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            double temp = Double.Parse(items[i].ToString().Replace('.',','));
+                            types[i] = "double";
+                        }
+                        catch
+                        {
+                            try
+                            {
+                                string temp = Convert.ToString(items[i]);
+                                types[i] = "string";
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Возникла ошибка при приведении типов");
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            return types;
+            
+        }
+        private bool initialCheck()     //метод для проверки таблицы на корректность
+        {
+            if (source_table != null)
+            {
+                for (int i=0; i< source_table.Rows.Count;i++)
+                {
+                    object[] item_array = source_table.Rows[i].ItemArray;
+                    for (int j = 0; j < item_array.Length; j++)
+                    {
+                        if (item_array[j].ToString() == "")
+                        {
+                            AuxiliaryForms.FillerForm dialog = new AuxiliaryForms.FillerForm();
+                            dialog.ShowDialog();
+                            if (dialog.getDialogResult() == 0) MessageBox.Show("Внимание. Таблица все еще не заполнена");
+                            else if (dialog.getDialogResult() == 1) { tableHighlight(); return false; }
+                            else { tablePutZeros(); return false; }
+                        } 
+                    }
+                }
+                return true;
+            }
+            else return false;
+        }
+
+        private void tablePutZeros()        //Заполнение пустых ячеек нулями
+        {
+            for (int i = 0; i < source_table.Rows.Count; i++)
+            {
+                object[] item_array = source_table.Rows[i].ItemArray;
+                for (int j = 0; j < item_array.Length; j++)
+                {
+                    if (item_array[j].ToString() == "") item_array[j] = 0;
+                }
+                source_table.Rows[i].ItemArray = item_array;
+            }
+        }
+        private void tableHighlight()       //Подсвечивание незаполненных ячеек. ДОДЕЛАТЬ
+        {
+            for (int i = 0; i < source_table.Rows.Count; i++)
+            {
+                object[] item_array = source_table.Rows[i].ItemArray;
+                for (int j = 0; j < item_array.Length; j++)
+                {
+               //     if (item_array.ToString() == "") data_table.Style.Triggers.Add(new Trigger() { Property="Text", Value=""}
+                }
+            }
         }
     }
 }

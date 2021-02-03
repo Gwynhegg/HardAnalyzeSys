@@ -15,6 +15,8 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
         public TableStructure()
         {
             records = new List<DataRecord>();       //инициализация списка записей
+            headers = new List<string>();       //инициализация списка заголовков
+            data_types = new List<string>();        ///инициализация списка типов данных
         }
         public void addRecords(DataRecord record)       //добавить запись в список
         {

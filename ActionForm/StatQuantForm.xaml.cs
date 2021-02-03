@@ -21,8 +21,8 @@ namespace HardAnalyzeSys.ActionForm
     {
 
         Window parent_form;
-        DataEntities.BasicDataEntity data;
-        public StatQuantForm(Window parent_form, DataEntities.BasicDataEntity data)
+        DataEntities.DataEntity data;
+        public StatQuantForm(Window parent_form, DataEntities.DataEntity data)
         {
             this.parent_form = parent_form;
             this.data = data;

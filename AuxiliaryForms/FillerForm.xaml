@@ -1,0 +1,14 @@
+﻿<Window x:Class="HardAnalyzeSys.AuxiliaryForms.FillerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HardAnalyzeSys.AuxiliaryForms"
+        mc:Ignorable="d"
+        Title="Внимание" Height="183.071" Width="449.213">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="были обнаружены ячейки с пустыми значениями. Дальнейшая работа с таблицей данных невозможно. Вам предлагается два варианта: подсветить ячейки для редактирования или заполнить пустые ячейки нулями?" VerticalAlignment="Top" Height="54" Width="431"/>
+        <Button Content="Подсветить" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="171" Height="73" Click="Button_Click"/>
+        <Button Content="Заполнить нулями" HorizontalAlignment="Left" Margin="260,69,0,0" VerticalAlignment="Top" Width="171" Height="73" Click="Button_Click_1"/>
+    </Grid>
+</Window>

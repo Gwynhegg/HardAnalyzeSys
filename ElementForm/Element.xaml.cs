@@ -31,7 +31,17 @@ namespace HardAnalyzeSys.ElementForm
 
         public void addDataQuantity(string name_of_value, string parameter)
         {
-            if (entity is DataEntities.BasicDataEntity) quantities_table.Items.Add(name_of_value + " " + parameter + " " + ((DataEntities.BasicDataEntity)entity).getStatValue(name_of_value, parameter));
+            if (entity is DataEntities.BasicDataEntity) 
+            {
+                string quantity_string = name_of_value + " " + parameter + " " + ((DataEntities.BasicDataEntity)entity).getStatValue(name_of_value, parameter);
+                if (!quantities_table.Items.Contains(quantity_string)) quantities_table.Items.Add(quantity_string);
+            }
+        }
+
+        private void btn_add_quantity(object sender, RoutedEventArgs e)
+        {
+            ActionForm.StatQuantForm new_statform = new ActionForm.StatQuantForm(this, entity);
+            new_statform.ShowDialog();
         }
     }
 }

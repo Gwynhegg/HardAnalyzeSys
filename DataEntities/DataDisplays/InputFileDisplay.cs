@@ -24,7 +24,7 @@ namespace HardAnalyzeSys.DataEntities.DataDisplays
             bitmap.UriSource = new Uri("inputfile.png", UriKind.Relative);
             bitmap.EndInit();
             cust_control.image.Source = bitmap;
-            cust_control.image.MouseDown += toDataElementForm;
+            cust_control.image.MouseLeftButtonUp += toDataElementForm;
 
             cust_control.name.Content = entity.getEntityName();     //отображаем имя элемента данных
             reference_entity = entity;      //передаем ссылку на родительский элемент

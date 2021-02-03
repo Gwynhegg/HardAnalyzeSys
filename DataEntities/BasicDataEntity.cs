@@ -22,6 +22,11 @@ namespace HardAnalyzeSys.DataEntities
             data_quantities = new Dictionary<(string,string), double>();       //инициализация списка статистических величин
         }
 
+        public void transferDataTypes(string[] data_types)
+        {
+            foreach (string type in data_types) data_structure.setDataTypes(type);
+        }
+
         public void addDataRepresentation(DataRepresentation data_representation)       //метод для добавления представления в список
         {
             this.data_representations.Add(data_representation);
@@ -57,13 +62,13 @@ namespace HardAnalyzeSys.DataEntities
         //ОПРЕДЕЛИТЬ
         public DataDisplay GetDataDisplay()     
         {
-            return null;
+            return displayed_type;
         }
 
         //ОПРЕДЕЛИТЬ
         public void setDataDisplay(DataDisplay display)     //сеттер для отображения на случай смены иконки и т.д.
         {
-            return;
+            displayed_type = display;
         }
 
         public DataDisplays.CustomControl displayIcon(int left, int top)        //возвращаем кастомный элемент отображения на форму
@@ -77,7 +82,7 @@ namespace HardAnalyzeSys.DataEntities
             {
                 int field_id = data_structure.getHeaders().IndexOf(parameter);
                 double[] temporal_array = new double[data_structure.sizeOfStructure()];
-                for (int i = 0; i < temporal_array.Length; i++) temporal_array[i] = (double)data_structure[i][field_id];
+                for (int i = 0; i < temporal_array.Length; i++) temporal_array[i] = Convert.ToDouble(data_structure[i][field_id]);
                 data_quantities.Add((name_of_value, parameter), StatLibrary.Calculate(name_of_value, temporal_array));
             }
         }

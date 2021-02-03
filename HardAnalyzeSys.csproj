@@ -90,6 +90,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AuxiliaryForms\FillerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuxiliaryForms\LogForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataEntities\DataDisplays\CustomControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +120,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AuxiliaryForms\FillerForm.xaml.cs">
+      <DependentUpon>FillerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuxiliaryForms\LogForm.xaml.cs">
+      <DependentUpon>LogForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataEntities\BasicDataEntity.cs" />
     <Compile Include="DataEntities\DataDisplays\CustomControl.xaml.cs">
