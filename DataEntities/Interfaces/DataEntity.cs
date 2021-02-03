@@ -17,7 +17,7 @@ namespace HardAnalyzeSys.DataEntities
 
         List<DataRepresentation> GetDataRepresentations();      //получить список для отображения на форме (графики и пр.)
 
-        void calculateStatValue(string name_of_value, string parameter, int field_id);
+        void calculateStatValue(string name_of_value, string parameter);
         Dictionary<(string, string), double> getAllStatistic();
         double getStatValue(string name_of_value, string parameter);
         void setEntityName(string name);

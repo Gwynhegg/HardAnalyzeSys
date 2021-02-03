@@ -20,11 +20,18 @@ namespace HardAnalyzeSys.ElementForm
     /// </summary>
     public partial class Element : Window
     {
+        DataEntities.DataEntity entity;
         public Element(DataEntities.DataEntity entity) //ПОКА ЧТО В ОГРАНИЧЕННОМ ФОРМАТЕ
         {
             InitializeComponent();
+            this.entity = entity;
             entity_name.Content = entity.getEntityName();
             entity_data.ItemsSource = entity.GetDataRepresentations()[0].getDataTable().AsDataView();
+        }
+
+        public void addDataQuantity(string name_of_value, string parameter)
+        {
+            if (entity is DataEntities.BasicDataEntity) quantities_table.Items.Add(name_of_value + " " + parameter + " " + ((DataEntities.BasicDataEntity)entity).getStatValue(name_of_value, parameter));
         }
     }
 }

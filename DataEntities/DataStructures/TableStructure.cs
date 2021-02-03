@@ -8,6 +8,8 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
 {
     public class TableStructure : DataStructure
     {
+        private List<string> headers;
+        private List<string> data_types;
         private List<DataRecord> records;
 
         public TableStructure()
@@ -22,6 +24,26 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
         public int sizeOfStructure()        //геттер дял размера списка с записями
         {
             return records.Count;
+        }
+
+        public void setHeaders(string header)
+        {
+            this.headers.Add(header);
+        }
+
+        public void setDataTypes(string type)
+        {
+            data_types.Add(type);
+        }
+
+        public List<string> getHeaders()
+        {
+            return headers;
+        }
+
+        public List<string> getDataTypes()
+        {
+            return data_types;
         }
 
         public DataRecord getRecord(int index)      //геттер для записи по индексу

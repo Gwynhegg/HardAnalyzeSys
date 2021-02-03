@@ -13,5 +13,10 @@ namespace HardAnalyzeSys.DataEntities
         int sizeOfStructure();      //геттер размера структуры для перебора
         DataRecord getRecord(int index);        //получение элемента по индексу
         DataRecord this[int index] { get;  }
+
+        void setHeaders(string header);
+        List<string> getHeaders();
+        void setDataTypes(string data_type);
+        List<string> getDataTypes();
     }
 }

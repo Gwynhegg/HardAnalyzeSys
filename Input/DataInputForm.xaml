@@ -15,5 +15,7 @@
         <Button x:Name="btn_create" Content="Создать" HorizontalAlignment="Left" Margin="314,63,0,0" VerticalAlignment="Top" Width="152" Height="51" Click="btnСreateClick"/>
         <Button x:Name="brn_add_parameter" Content="Добавить параметр" HorizontalAlignment="Left" Margin="10,414,0,0" VerticalAlignment="Top" Width="162" Height="28" Click="btnAddParameter"/>
         <Button x:Name="btn_create_object" Content="Создать объект" HorizontalAlignment="Left" Margin="600,414,0,0" VerticalAlignment="Top" Width="182" Height="28" Click="btnCreateObject"/>
+        <TextBox x:Name="element_name" HorizontalAlignment="Left" Height="28" Margin="452,414,0,0" TextWrapping="Wrap" Text="Default" VerticalAlignment="Top" Width="143"/>
+        <Label Content="Введите имя элемента" HorizontalAlignment="Left" Margin="304,416,0,0" VerticalAlignment="Top" Width="143"/>
     </Grid>
 </Window>

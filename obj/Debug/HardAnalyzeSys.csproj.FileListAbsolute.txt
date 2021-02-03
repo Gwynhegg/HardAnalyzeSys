@@ -66,3 +66,5 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataEntities\DataDisplays
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\DataEntities\DataDisplays\CustomControl.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\GeneratedInternalTypeHelper.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\HardAnalyzeSys.csprojAssemblyReference.cache
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\StatQuantForm.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\StatQuantForm.baml
