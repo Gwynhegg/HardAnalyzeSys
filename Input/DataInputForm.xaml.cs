@@ -215,7 +215,7 @@ namespace HardAnalyzeSys
             //Открыли соединение
             MySqlConnection connection = new MySqlConnection(connStr);
 
-            string nameTable = Interaction.InputBox("bla", "bla"); //Название таблицы
+            string nameTable = Interaction.InputBox("Название таблицы", "Таблица"); //Название таблицы
 
             string sql = "SELECT * FROM " + nameTable ; // Строка запроса
 
