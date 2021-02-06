@@ -163,17 +163,22 @@ namespace HardAnalyzeSys
                 MessageBox.Show("Не удалось установить соединение с базой Access");
                 return null;
             }
+
+
             string tableName = Microsoft.VisualBasic.Interaction.InputBox("Введите название таблицы", "Название таблицы");            //решил не подключать целую библиотеку. Считываем название табилцы
             string query = "SELECT * FROM " + tableName;            // текст запроса
-            OleDbCommand command = new OleDbCommand(query, my_connection);            // создаем объект OleDbCommand для выполнения запроса к БД MS Access
-            OleDbDataReader reader = command.ExecuteReader();
-            DataSet dataset = new DataSet();
-            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter();
-            oleDbDataAdapter.Fill(dataset);
+            
+           
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(query, connectString); // Используем адаптер принимающий запроз к БД и соединение установленное ранее
+            oleDbDataAdapter.Fill(dataTable); // передаём ссыку на нужный dataTablе, который заполяется данными из таблицы
+
             my_connection.Close();
+
+            
             try
             {
-                return dataset.Tables[0];
+                return dataTable;
             }
             catch
             {
