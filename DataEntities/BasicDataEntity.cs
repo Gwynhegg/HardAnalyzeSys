@@ -43,7 +43,7 @@ namespace HardAnalyzeSys.DataEntities
             foreach (DataColumn column in data.Columns) data_structure.setHeaders(column.ColumnName);       //переносим имена столбцов
             foreach (DataRow row in data.Rows)      //переносим данные с таблицы в созданную структуру
             { 
-                DataStructures.DataRecord new_record = new DataStructures.DataRecord(row.ItemArray);
+                DataStructures.DataRecord new_record = new DataStructures.DataRecord(row.ItemArray,data_structure.getDataTypes());
                 data_structure.addRecords(new_record);
             }
         }

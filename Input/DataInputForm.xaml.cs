@@ -221,8 +221,8 @@ namespace HardAnalyzeSys
 
                     DataEntities.BasicDataEntity basic_data = new DataEntities.BasicDataEntity();
                     basic_data.setEntityName(element_name.Text);
-                    basic_data.createDataStructure(source_table);
                     basic_data.transferDataTypes(data_types);
+                    basic_data.createDataStructure(source_table);
 
                     //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
                     //Преобразовать данные из таблицы в массивы и передать

@@ -119,3 +119,5 @@ C:\Users\user\Source\Repos\Gwynhegg\HardAnalyzeSys\obj\Debug\AuxiliaryForms\Fill
 C:\Users\user\Source\Repos\Gwynhegg\HardAnalyzeSys\obj\Debug\AuxiliaryForms\FillerForm.baml
 C:\Users\user\Source\Repos\Gwynhegg\HardAnalyzeSys\obj\Debug\AuxiliaryForms\LogForm.g.cs
 C:\Users\user\Source\Repos\Gwynhegg\HardAnalyzeSys\obj\Debug\AuxiliaryForms\LogForm.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\FillerForm.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\LogForm.g.cs

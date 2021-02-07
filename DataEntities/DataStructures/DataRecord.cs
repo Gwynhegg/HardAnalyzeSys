@@ -8,12 +8,21 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
 {
     public class DataRecord
     {
-        private List<object> data_storage;
+        private ArrayList data_storage;
 
-        public DataRecord(object[] args)
+        public DataRecord(object[] args, string[] types)
         {
-            data_storage = new List<object>();      //инициализация списка объектов
-            foreach (object argument in args) data_storage.Add(argument);       //добавление элементов
+            data_storage = new ArrayList();      //инициализация списка объектов
+            for (int i=0; i<args.Length; i++)
+            {
+               switch (types[i])
+                {
+                    case "bool": data_storage.Add(Convert.ToBoolean(args[i]));break;
+                    case "int": data_storage.Add(Convert.ToInt32(args[i]));break;
+                    case "double": data_storage.Add(Convert.ToDouble(args[i]));break;
+                    case "string": data_storage.Add(Convert.ToString(args[i]));break;
+                }
+            }
         }
 
         public int sizeOfSet()      //геттер размера набора с элементами
