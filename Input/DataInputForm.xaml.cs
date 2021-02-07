@@ -8,6 +8,9 @@ using System.IO;
 using ExcelDataReader;
 using Newtonsoft.Json;
 using System.Data.OleDb;
+using Microsoft.VisualBasic;
+using MySql.Data.MySqlClient;
+
 
 namespace HardAnalyzeSys
 {
@@ -45,6 +48,7 @@ namespace HardAnalyzeSys
                 case ".xml": source_table = xmlInput(filename); break;
                 case ".mdb":
                 case ".accdb": source_table = accessInput(filename); break;
+                case ".txt": source_table = mysqlInput(); break;
                 default: try {
                         source_table = customInput(filename, new char[] { ',', ';', '\t' });
                     }
@@ -163,23 +167,71 @@ namespace HardAnalyzeSys
                 MessageBox.Show("Не удалось установить соединение с базой Access");
                 return null;
             }
-            string tableName = Microsoft.VisualBasic.Interaction.InputBox("Введите название таблицы", "Название таблицы");            //решил не подключать целую библиотеку. Считываем название табилцы
+
+
+            string tableName = Interaction.InputBox("Введите название таблицы", "Название таблицы");            //решил не подключать целую библиотеку. Считываем название табилцы
             string query = "SELECT * FROM " + tableName;            // текст запроса
-            OleDbCommand command = new OleDbCommand(query, my_connection);            // создаем объект OleDbCommand для выполнения запроса к БД MS Access
-            OleDbDataReader reader = command.ExecuteReader();
-            DataSet dataset = new DataSet();
-            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter();
-            oleDbDataAdapter.Fill(dataset);
+            
+           
+            DataTable dataTable = new DataTable();
+            OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(query, connectString); // Используем адаптер принимающий запроз к БД и соединение установленное ранее
+            oleDbDataAdapter.Fill(dataTable); // передаём ссыку на нужный dataTablе, который заполяется данными из таблицы
+
             my_connection.Close();
+
+            
             try
             {
-                return dataset.Tables[0];
+                return dataTable;
             }
             catch
             {
                 MessageBox.Show("Возникла ошибка при считывании данных из Access. Убедитесь в корректности входных данных");
                 return null;
             }  
+        }
+
+
+
+        //Для этого потребуется запустить MySQL и Apache ( или другой локальный сервер)
+        //Код спизжен с https://котодомик.рф/2015/02/25/c_sharp_2/
+        //Добавить исправление ошибок при подключении
+        private DataTable mysqlInput()
+        {
+            string serverName = "localhost"; // Адрес сервера (для локальной базы пишите "localhost")
+            string userName = Interaction.InputBox("Введите Имя пользователя", "Имя пользователя"); // Имя пользователя (rootForP)
+            string password = Interaction.InputBox("Введите Пароль для подключения", "Пароль для подключения"); // Пароль для подключения ('')
+            string dbName = Interaction.InputBox("Введите Имя базы данных", "Имя базы данных"); //Имя базы данных (Я назвал "testDB")
+            string port = "3306"; // Порт для подключения
+
+            //Строка подключения
+            string connStr = "server=" + serverName +
+                             ";user=" + userName +
+                             ";database=" + dbName +
+                             ";port=" + port + ";";
+                             //";password=" + password + ";"; //При создании базы отключил ввод пароля если пароль есть поправить строку подключения
+
+
+            //Открыли соединение
+            MySqlConnection connection = new MySqlConnection(connStr);
+
+            string nameTable = Interaction.InputBox("Название таблицы", "Таблица"); //Название таблицы
+
+            string sql = "SELECT * FROM " + nameTable ; // Строка запроса
+
+
+
+            MySqlCommand sqlCom = new MySqlCommand(sql, connection);
+            connection.Open();
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCom);
+            DataTable dt = new DataTable();
+            dataAdapter.Fill(dt);
+
+
+
+
+            return dt;
         }
 
         private void btnСreateClick(object sender, RoutedEventArgs e)       //вызов формы для создания новой таблицы
@@ -394,5 +446,7 @@ namespace HardAnalyzeSys
                 }
             }
         }
+
+        
     }
 }
