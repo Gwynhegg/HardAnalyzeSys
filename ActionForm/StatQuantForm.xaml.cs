@@ -22,36 +22,72 @@ namespace HardAnalyzeSys.ActionForm
 
         Window parent_form;
         DataEntities.DataEntity data;
+        bool is_numeric=false;
+        string selected_quantity;
         public StatQuantForm(Window parent_form, DataEntities.DataEntity data)
         {
             this.parent_form = parent_form;
             this.data = data;
             InitializeComponent();
-            List<string> headers = data.extractDataStructure().getHeaders();
-            foreach (string header in headers) param_names.Items.Add(header);
         }
 
 
-        //КНОПОЧКИ ИСКЛЛЮЧИТЕЛЬНО ПРОБНЫЕ
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void getNumericValues(object sender, EventArgs e)
         {
-            calculateAndTransfer("arithmetical mean");
+            setQuantity(sender);
+            if (param_names.Items.Count == 0)
+            {
+                DataEntities.DataStructure temp = data.extractDataStructure();
+                List<string> fields = temp.getHeaders();
+                List<string> types = temp.getDataTypes();
+                for (int i = 0; i < fields.Count; i++)
+                    if (types[i].Equals("int") || types[i].Equals("double")) param_names.Items.Add(fields[i]);
+                is_numeric = true;
+            } else if (!is_numeric)
+            {
+                param_names.Items.Clear();
+                getNumericValues(sender, e);
+            }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void getAllValues(object sender, EventArgs e)
         {
-            calculateAndTransfer("geometrical mean");
+            setQuantity(sender);
+            if (param_names.Items.Count == 0)
+            {
+                DataEntities.DataStructure temp = data.extractDataStructure();
+                List<string> fields = temp.getHeaders();
+                foreach (string field in fields) param_names.Items.Add(field);
+                is_numeric = false;
+            } else if (is_numeric)
+            {
+                param_names.Items.Clear();
+                getAllValues(sender, e);
+            }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void btn_calculate_Click(object sender, RoutedEventArgs e)
         {
-            calculateAndTransfer("maximal");
+            data.calculateStatValue(selected_quantity, param_names.SelectedItem.ToString(), is_numeric);
+            if (parent_form is ElementForm.Element) ((ElementForm.Element)parent_form).addDataQuantity(selected_quantity, param_names.SelectedItem.ToString());
         }
 
-        private void calculateAndTransfer(string name_of_value)
+        private void setQuantity(object sender)
         {
-            data.calculateStatValue(name_of_value, param_names.SelectedItem.ToString());
-            if (parent_form is ElementForm.Element) ((ElementForm.Element)parent_form).addDataQuantity(name_of_value, param_names.SelectedItem.ToString());
+            switch (((ListBoxItem)sender).Content)
+            {
+                case "Минимум": selected_quantity = "minimal";  break;
+                case "Максимум": selected_quantity = "maximal"; break;
+                case "Среднее арифметическое": selected_quantity = "arithmetical mean"; break;
+                case "Среднее геометрическое": selected_quantity = "geometrical mean"; break;
+                case "Среднее гармоническое": selected_quantity = "harmonic mean"; break;
+                case "Среднее квадратическое": selected_quantity = "square mean"; break;
+                case "Мода": selected_quantity = "mode"; break;
+                case "Медиана": selected_quantity = "median"; break;
+                case "Математическое ожидание": selected_quantity = "math expectation"; break;
+                case "Среднеквадратичное отклонение": selected_quantity = "standart deviation"; break;
+            }
         }
+
     }
 }

@@ -5,13 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardAnalyzeSys.ActionForm"
         mc:Ignorable="d"
-        Title="Статистическая величина" Height="441.322" Width="331.405">
+        Title="Статистическая величина" Height="485.089" Width="984.269">
     <Grid Margin="0,0,2,-2">
-        <Button Content="Среднее арифметическое" HorizontalAlignment="Left" Margin="79,113,0,0" VerticalAlignment="Top" Width="179" Height="60" Click="Button_Click"/>
-        <Label Content="Пробные кнопочки" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Среднее геометрическое" HorizontalAlignment="Left" Margin="79,190,0,0" VerticalAlignment="Top" Width="179" Height="67" Click="Button_Click_1"/>
-        <Button Content="Максимальное" HorizontalAlignment="Left" Margin="79,273,0,0" VerticalAlignment="Top" Width="179" Height="66" Click="Button_Click_2"/>
-        <ComboBox x:Name ="param_names" HorizontalAlignment="Left" Margin="64,54,0,0" VerticalAlignment="Top" Width="210"/>
+        <TabControl HorizontalAlignment="Left" Width="507" TabStripPlacement="Left">
+            <TabItem Header="Базовые статистические величины">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox HorizontalAlignment="Left" Width="205">
+                        <ListBoxItem Content="Минимум" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Максимум" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Дополнить..."/>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Средние математические величины">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox>
+                        <ListBoxItem Content="Среднее арифметическое" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Среднее геометрическое" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Среднее гармоническое" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Среднее квадратическое" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Дополнить..."/>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Теория вероятностей и математическая статистика">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox>
+                        <ListBoxItem Content="Мода" Selected="getAllValues"/>
+                        <ListBoxItem Content="Медиана" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Математическое ожидание" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Среднеквадратичное отклонение" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Дополнить..."/>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btn_calculate" Content="Рассчитать" HorizontalAlignment="Left" Margin="563,339,0,0" VerticalAlignment="Top" Width="350" Height="66" Click="btn_calculate_Click"/>
+        <ListView x:Name="param_names"  HorizontalAlignment="Left" Height="297" Margin="563,37,0,0" VerticalAlignment="Top" Width="350">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

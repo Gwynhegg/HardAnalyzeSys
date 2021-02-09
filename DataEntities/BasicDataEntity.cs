@@ -14,12 +14,12 @@ namespace HardAnalyzeSys.DataEntities
         private List<DataRepresentation> data_representations;      //тут хранятся представления данных
         private DataStructure data_structure;       //тут хранится структура данных
         private DataDisplay displayed_type;     //вспомогательное поле для отображения
-        private Dictionary<(string,string), double> data_quantities;        //тут хранится словарь с вычисляемыми величинами. Для удобства и скорости будем хранить в виде ЗАПРОС (название величины) - ЗНАЧЕНИЕ
+        private Dictionary<(string,string), object> data_quantities;        //тут хранится словарь с вычисляемыми величинами. Для удобства и скорости будем хранить в виде ЗАПРОС (название величины) - ЗНАЧЕНИЕ
 
         public BasicDataEntity()
         {
             data_representations = new List<DataRepresentation>();      //инициализация списка представлений
-            data_quantities = new Dictionary<(string,string), double>();       //инициализация списка статистических величин
+            data_quantities = new Dictionary<(string,string), object>();       //инициализация списка статистических величин
         }
 
         public void transferDataTypes(string[] data_types)
@@ -37,13 +37,11 @@ namespace HardAnalyzeSys.DataEntities
             data_structure = new DataStructures.TableStructure();       //Создается структура
             this.addDataRepresentation(new DataRepresentations.Table(data));        //Задается базовое табличное представление
             displayed_type = new DataDisplays.InputFileDisplay(this);
-            //ДОБАВИТЬ ПРОВЕРКУ КОРРЕКТНОСТИ ДАННЫХ
-
 
             foreach (DataColumn column in data.Columns) data_structure.setHeaders(column.ColumnName);       //переносим имена столбцов
             foreach (DataRow row in data.Rows)      //переносим данные с таблицы в созданную структуру
             { 
-                DataStructures.DataRecord new_record = new DataStructures.DataRecord(row.ItemArray,data_structure.getDataTypes());
+                DataStructures.DataRecord new_record = new DataStructures.DataRecord(row.ItemArray);
                 data_structure.addRecords(new_record);
             }
         }
@@ -76,23 +74,23 @@ namespace HardAnalyzeSys.DataEntities
             return displayed_type.getDisplayedImage(left, top);
         }
 
-        public void calculateStatValue(string name_of_value, string parameter) //ПОКА ЧТО ТОЛЬКО ДЛЯ DOUBLE значений УКАЗАННЫХ ПОЛЕЙ
+        public void calculateStatValue(string name_of_value, string parameter, bool is_numeric)
         {
             if (!data_quantities.ContainsKey((name_of_value, parameter)))
             {
                 int field_id = data_structure.getHeaders().IndexOf(parameter);
-                double[] temporal_array = new double[data_structure.sizeOfStructure()];
-                for (int i = 0; i < temporal_array.Length; i++) temporal_array[i] = Convert.ToDouble(data_structure[i][field_id]);
-                data_quantities.Add((name_of_value, parameter), StatLibrary.Calculate(name_of_value, temporal_array));
+                object[] temporal_array = new object[data_structure.sizeOfStructure()];
+                for (int i = 0; i < temporal_array.Length; i++) temporal_array[i] = data_structure[i][field_id];
+                data_quantities.Add((name_of_value, parameter), StatLibrary.Calculate(name_of_value, temporal_array, is_numeric));
             }
         }
 
-        public Dictionary<(string, string), double> getAllStatistic()       //получение вссех статистических величин
+        public Dictionary<(string, string), object> getAllStatistic()       //получение вссех статистических величин
         {
             return data_quantities;
         }
 
-        public double getStatValue(string name_of_value, string parameter)      //получение определенной стат. величины по имени и параметру
+        public object getStatValue(string name_of_value, string parameter)      //получение определенной стат. величины по имени и параметру
         {
             if (data_quantities.ContainsKey((name_of_value, parameter))) return data_quantities[(name_of_value, parameter)]; else return -1;
         }

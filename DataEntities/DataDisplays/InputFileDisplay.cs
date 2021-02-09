@@ -30,6 +30,10 @@ namespace HardAnalyzeSys.DataEntities.DataDisplays
             reference_entity = entity;      //передаем ссылку на родительский элемент
         }
 
+        private void moveElement(object sender, EventArgs e)
+        {
+
+        }
         private void toDataElementForm(object sender, EventArgs e)
         {
             ElementForm.Element new_dataform = new ElementForm.Element(reference_entity);       //при нажатии на картинку вызываем новую форму для отображения данных

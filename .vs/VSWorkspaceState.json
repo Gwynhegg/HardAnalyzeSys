@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DataEntities",
+    "\\DataEntities\\DataStructures",
+    "\\Input"
   ],
   "PreviewInSolutionExplorer": false
 }

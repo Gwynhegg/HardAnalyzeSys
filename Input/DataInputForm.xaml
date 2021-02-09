@@ -10,7 +10,7 @@
         </DataGrid>
         <Label Content="Апдейт. Здесь будет отображена ОДНА кнопушка, которая отвечает за ввод любых данных" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
         <Button x:Name="btn_input" Content="Ввод данных" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="145" Height="51" Click="btnFileInputClick"/>
-        <Button x:Name="btn_sql_input" Content="SQL" HorizontalAlignment="Left" Margin="160,63,0,0" VerticalAlignment="Top" Width="149" Height="20"/>
+        <Button x:Name="btn_sql_input" Content="SQL" HorizontalAlignment="Left" Margin="160,63,0,0" VerticalAlignment="Top" Width="149" Height="20" Click="mysqlInput"/>
         <Button x:Name="btn_access_input" Content="Access" HorizontalAlignment="Left" Margin="160,94,0,0" VerticalAlignment="Top" Width="149"/>
         <Button x:Name="btn_create" Content="Создать" HorizontalAlignment="Left" Margin="314,63,0,0" VerticalAlignment="Top" Width="152" Height="51" Click="btnСreateClick"/>
         <Button x:Name="brn_add_parameter" Content="Добавить параметр" HorizontalAlignment="Left" Margin="10,414,0,0" VerticalAlignment="Top" Width="162" Height="28" Click="btnAddParameter"/>

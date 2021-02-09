@@ -48,7 +48,6 @@ namespace HardAnalyzeSys
                 case ".xml": source_table = xmlInput(filename); break;
                 case ".mdb":
                 case ".accdb": source_table = accessInput(filename); break;
-                case ".txt": source_table = mysqlInput(); break;
                 default: try {
                         source_table = customInput(filename, new char[] { ',', ';', '\t' });
                     }
@@ -178,8 +177,7 @@ namespace HardAnalyzeSys
             oleDbDataAdapter.Fill(dataTable); // передаём ссыку на нужный dataTablе, который заполяется данными из таблицы
 
             my_connection.Close();
-
-            
+          
             try
             {
                 return dataTable;
@@ -191,12 +189,7 @@ namespace HardAnalyzeSys
             }  
         }
 
-
-
-        //Для этого потребуется запустить MySQL и Apache ( или другой локальный сервер)
-        //Код спизжен с https://котодомик.рф/2015/02/25/c_sharp_2/
-        //Добавить исправление ошибок при подключении
-        private DataTable mysqlInput()
+        private void mysqlInput(object sender, RoutedEventArgs e)
         {
             string serverName = "localhost"; // Адрес сервера (для локальной базы пишите "localhost")
             string userName = Interaction.InputBox("Введите Имя пользователя", "Имя пользователя"); // Имя пользователя (rootForP)
@@ -210,8 +203,6 @@ namespace HardAnalyzeSys
                              ";database=" + dbName +
                              ";port=" + port + ";";
                              //";password=" + password + ";"; //При создании базы отключил ввод пароля если пароль есть поправить строку подключения
-
-
             //Открыли соединение
             MySqlConnection connection = new MySqlConnection(connStr);
 
@@ -219,19 +210,22 @@ namespace HardAnalyzeSys
 
             string sql = "SELECT * FROM " + nameTable ; // Строка запроса
 
-
-
             MySqlCommand sqlCom = new MySqlCommand(sql, connection);
-            connection.Open();
 
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCom);
-            DataTable dt = new DataTable();
-            dataAdapter.Fill(dt);
+            try
+            {
+                connection.Open();
 
-
-
-
-            return dt;
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sqlCom);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                source_table = dt;
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось установить соединение с базой данных");
+            }
+            
         }
 
         private void btnСreateClick(object sender, RoutedEventArgs e)       //вызов формы для создания новой таблицы
@@ -273,8 +267,9 @@ namespace HardAnalyzeSys
 
                     DataEntities.BasicDataEntity basic_data = new DataEntities.BasicDataEntity();
                     basic_data.setEntityName(element_name.Text);
-                    basic_data.transferDataTypes(data_types);
                     basic_data.createDataStructure(source_table);
+                    basic_data.transferDataTypes(data_types);
+
 
                     //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
                     //Преобразовать данные из таблицы в массивы и передать
@@ -446,7 +441,5 @@ namespace HardAnalyzeSys
                 }
             }
         }
-
-        
     }
 }

@@ -24,5 +24,10 @@ namespace HardAnalyzeSys.DataEntities.DataDisplays
         {
             InitializeComponent();
         }
+
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
