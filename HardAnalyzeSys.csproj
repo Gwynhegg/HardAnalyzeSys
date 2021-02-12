@@ -119,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ActionForm\DataPreprocForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ActionForm\StatQuantForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +151,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ActionForm\DataPreprocForm.xaml.cs">
+      <DependentUpon>DataPreprocForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ActionForm\StatQuantForm.xaml.cs">
       <DependentUpon>StatQuantForm.xaml</DependentUpon>
     </Compile>
@@ -168,10 +175,12 @@
     <Compile Include="DataEntities\DataRepresentations\Table.cs" />
     <Compile Include="DataEntities\DataStructures\DataRecord.cs" />
     <Compile Include="DataEntities\DataStructures\TableStructure.cs" />
+    <Compile Include="DataEntities\Interfaces\AbstractDataEntity.cs" />
     <Compile Include="DataEntities\Interfaces\DataDisplay.cs" />
     <Compile Include="DataEntities\Interfaces\DataEntity.cs" />
     <Compile Include="DataEntities\Interfaces\DataRepresentation.cs" />
     <Compile Include="DataEntities\Interfaces\DataStructure.cs" />
+    <Compile Include="DataEntities\PreprocessingDataEntity.cs" />
     <Compile Include="DataEntities\StatLibrary.cs" />
     <Compile Include="ElementForm\Element.xaml.cs">
       <DependentUpon>Element.xaml</DependentUpon>

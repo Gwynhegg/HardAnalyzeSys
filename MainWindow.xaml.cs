@@ -21,6 +21,7 @@ namespace HardAnalyzeSys
     public partial class MainWindow : Window
     {
 
+        private int coord_X = 10, coord_Y = 10;
         private List<DataEntities.DataEntity> data_objects;
         public MainWindow()
         {
@@ -43,10 +44,12 @@ namespace HardAnalyzeSys
             this.Close();
         }
 
-        public void enterBasicData(DataEntities.BasicDataEntity data)
+        public void enterData(DataEntities.Interfaces.AbstractDataEntity data)
         {
             data_objects.Add(data);     //дата-объект из окна ввода добавляется на главную форму
-            grid_window.Children.Add(data.displayIcon(60, 60));       //отображение контроллера
+            data.setParentWindow(this);
+            grid_window.Children.Add(data.displayIcon(coord_X, coord_Y));       //отображение контроллера
+            coord_X += 400;
         }
 
     }

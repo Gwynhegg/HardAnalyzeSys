@@ -21,10 +21,10 @@ namespace HardAnalyzeSys.ActionForm
     {
 
         Window parent_form;
-        DataEntities.DataEntity data;
+        DataEntities.Interfaces.AbstractDataEntity data;
         bool is_numeric=false;
         string selected_quantity;
-        public StatQuantForm(Window parent_form, DataEntities.DataEntity data)
+        public StatQuantForm(Window parent_form, DataEntities.Interfaces.AbstractDataEntity data)
         {
             this.parent_form = parent_form;
             this.data = data;

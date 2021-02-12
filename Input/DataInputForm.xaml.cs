@@ -273,7 +273,7 @@ namespace HardAnalyzeSys
 
                     //Тут происходит создание элемента BasicDataEntity, проверка на корректность и передача его на главную форму
                     //Преобразовать данные из таблицы в массивы и передать
-                    parent_window.enterBasicData(basic_data);
+                    parent_window.enterData(basic_data);
                     this.Close();
                 }
                 

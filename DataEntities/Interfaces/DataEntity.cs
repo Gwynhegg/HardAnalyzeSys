@@ -14,11 +14,7 @@ namespace HardAnalyzeSys.DataEntities
         void setDataDisplay(DataDisplay display);       //задать отображение на форме
         DataDisplay GetDataDisplay();       //получить отображение для показа на форме
         void addDataRepresentation(DataRepresentation data_representation);     //добавить одно представление в список сущности
-
         List<DataRepresentation> GetDataRepresentations();      //получить список для отображения на форме (графики и пр.)
-
-        void calculateStatValue(string name_of_value, string parameter, bool is_numeric);
-        Dictionary<(string, string), object> getAllStatistic();
         object getStatValue(string name_of_value, string parameter);
         void setEntityName(string name);
         string getEntityName();

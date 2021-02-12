@@ -13,9 +13,9 @@ namespace HardAnalyzeSys.DataEntities.DataDisplays
     public class InputFileDisplay : DataDisplay //Сюда планируется также добавлять обработчик событий
     {
         private CustomControl cust_control;     //добавление кастомного элемента в отображение
-        DataEntity reference_entity;        //сылка на родителя-элемент данных
+        Interfaces.AbstractDataEntity reference_entity;        //сылка на родителя-элемент данных
 
-        public InputFileDisplay(DataEntity entity)
+        public InputFileDisplay(Interfaces.AbstractDataEntity entity)
         {
             cust_control = new CustomControl();
 

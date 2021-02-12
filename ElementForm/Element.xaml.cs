@@ -20,8 +20,8 @@ namespace HardAnalyzeSys.ElementForm
     /// </summary>
     public partial class Element : Window
     {
-        DataEntities.DataEntity entity;
-        public Element(DataEntities.DataEntity entity) //ПОКА ЧТО В ОГРАНИЧЕННОМ ФОРМАТЕ
+        DataEntities.Interfaces.AbstractDataEntity entity;
+        public Element(DataEntities.Interfaces.AbstractDataEntity entity) //ПОКА ЧТО В ОГРАНИЧЕННОМ ФОРМАТЕ
         {
             InitializeComponent();
             this.entity = entity;
@@ -42,6 +42,12 @@ namespace HardAnalyzeSys.ElementForm
         {
             ActionForm.StatQuantForm new_statform = new ActionForm.StatQuantForm(this, entity);
             new_statform.ShowDialog();
+        }
+
+        private void btn_normalize_data(object sender, RoutedEventArgs e)
+        {
+            ActionForm.DataPreprocForm new_normform = new ActionForm.DataPreprocForm(this, entity);
+            new_normform.ShowDialog();
         }
     }
 }

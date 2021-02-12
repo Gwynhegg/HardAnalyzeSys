@@ -138,3 +138,5 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\MySql.Data.xml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\bin\Debug\Renci.SshNet.xml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\FillerForm.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\LogForm.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\DataPreprocForm.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\DataPreprocForm.baml
