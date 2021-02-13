@@ -5,11 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HardAnalyzeSys.ActionForm"
         mc:Ignorable="d"
-        Title="Предобработка данных" Height="450" Width="800">
+        Title="Предобработка данных" Height="450" Width="464">
     <Grid>
-        <ListBox x:Name="lb_titles" HorizontalAlignment="Left" Height="357" Margin="10,52,0,0" VerticalAlignment="Top" Width="245" SelectionMode="Multiple"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Выберите параметры для создания выборки:" VerticalAlignment="Top" Height="42" Width="153"/>
+        <ListBox x:Name="lb_titles" HorizontalAlignment="Left" Height="309" Margin="10,73,0,0" VerticalAlignment="Top" Width="181" SelectionMode="Multiple"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Создание выборки. Выберите необходимые параметры." VerticalAlignment="Top" Height="58" Width="153" TextAlignment="Center"/>
         <CheckBox x:Name="choose_all" Content="Выбрать все" HorizontalAlignment="Left" Margin="168,22,0,0" VerticalAlignment="Top" Checked="choose_all_Checked" Unchecked="choose_all_Unchecked"/>
+        <TextBlock HorizontalAlignment="Left" Margin="279,41,0,0" TextWrapping="Wrap" Text="Очистка данных" VerticalAlignment="Top" Height="27" Width="153" TextAlignment="Center"/>
+        <CheckBox x:Name="clear_tuples" Content="Удаление дубликатов" HorizontalAlignment="Left" Margin="295,73,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="279,221,0,0" TextWrapping="Wrap" Text="Выберите метод нормализации:" VerticalAlignment="Top" Height="37" Width="153" TextAlignment="Center" RenderTransformOrigin="0.503,0.432"/>
+        <ComboBox HorizontalAlignment="Left" Margin="279,258,0,0" VerticalAlignment="Top" Width="155" SelectedIndex="0">
+            <ComboBoxItem Content="Не нормализировать"/>
+            <ComboBoxItem Content="Метод минимакса"/>
+            <ComboBoxItem Content="Z-показатель"/>
+            <ComboBoxItem Content="Десятичное масштабирование"/>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="279,153,0,0" TextWrapping="Wrap" Text="Выберите метод обработки пропущенных значений:" VerticalAlignment="Top" Height="37" Width="153" TextAlignment="Center" RenderTransformOrigin="0.503,0.432"/>
+        <ComboBox HorizontalAlignment="Left" Margin="279,195,0,0" VerticalAlignment="Top" Width="155" SelectedIndex="0">
+            <ComboBoxItem Content="Нет"/>
+            <ComboBoxItem Content="Удаление"/>
+            <ComboBoxItem Content="Фиктивная подстановка"/>
+            <ComboBoxItem Content="Среднее значение"/>
+            <ComboBoxItem Content="Мода"/>
+            <ComboBoxItem Content="Подстановка по регрессии"/>
+        </ComboBox>
+        <Button x:Name="change_current" Content="Применить к текущему" HorizontalAlignment="Left" Margin="279,300,0,0" VerticalAlignment="Top" Width="153" Height="33" Click="change_current_Click"/>
+        <Button x:Name="create_new" Content="Создать новый" HorizontalAlignment="Left" Margin="279,348,0,0" VerticalAlignment="Top" Width="153" Height="34" Click="create_new_Click"/>
+        <ListBox x:Name="lb_types" HorizontalAlignment="Left" Height="309" Margin="196,73,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBlock HorizontalAlignment="Left" Margin="279,100,0,0" TextWrapping="Wrap" Text="Удаление выбросов:" VerticalAlignment="Top" Height="21" Width="153" TextAlignment="Center" RenderTransformOrigin="0.503,0.432"/>
+        <ComboBox x:Name="blowouts" HorizontalAlignment="Left" Margin="279,121,0,0" VerticalAlignment="Top" Width="153" SelectedIndex="0">
+            <ComboBoxItem Content="Нет"/>
+            <ComboBoxItem Content="Межквартильное расстояние"/>
+            <ComboBoxItem Content="Критерий Шовене"/>
+            <ComboBoxItem Content="Критерий Грабса"/>
+            <ComboBoxItem Content="Критерий Пирса"/>
+            <ComboBoxItem Content="Критерий Диксона"/>
+        </ComboBox>
 
     </Grid>
 </Window>

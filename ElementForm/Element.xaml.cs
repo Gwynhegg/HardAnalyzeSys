@@ -46,7 +46,7 @@ namespace HardAnalyzeSys.ElementForm
 
         private void btn_normalize_data(object sender, RoutedEventArgs e)
         {
-            ActionForm.DataPreprocForm new_normform = new ActionForm.DataPreprocForm(this, entity);
+            ActionForm.DataPreprocForm new_normform = new ActionForm.DataPreprocForm(this, entity.extractDataStructure());
             new_normform.ShowDialog();
         }
     }

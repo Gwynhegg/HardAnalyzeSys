@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\App.xaml
-9-634019281
+101827173054
 
-26234388393
+282038774608
 42845974119
-ActionForm\DataPreprocForm.xaml;ActionForm\StatQuantForm.xaml;AuxiliaryForms\FillerForm.xaml;AuxiliaryForms\LogForm.xaml;DataEntities\DataDisplays\CustomControl.xaml;ElementForm\Element.xaml;Input\CreationParams.xaml;Input\DataInputForm.xaml;MainWindow.xaml;
+ActionForm\DataPreprocForm.xaml;ActionForm\StatQuantForm.xaml;AuxiliaryForms\FillerForm.xaml;AuxiliaryForms\LogForm.xaml;AuxiliaryForms\WarningForm.xaml;DataEntities\DataDisplays\CustomControl.xaml;ElementForm\Element.xaml;Input\CreationParams.xaml;Input\DataInputForm.xaml;MainWindow.xaml;
 
-False
+True
 

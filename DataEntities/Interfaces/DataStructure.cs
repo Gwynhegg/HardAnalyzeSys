@@ -10,8 +10,14 @@ namespace HardAnalyzeSys.DataEntities
     public interface DataStructure
     {
         void addRecords(DataStructures.DataRecord record);      //добавление записи в список
+
+        void deleteRecord(int index);
         int sizeOfStructure();      //геттер размера структуры для перебора
+
+        int sizeOfHeaders();
         DataRecord getRecord(int index);        //получение элемента по индексу
+
+        List<DataRecord> getRecords();
         DataRecord this[int index] { get;  }
 
         void setHeaders(string header);

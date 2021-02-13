@@ -23,9 +23,19 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
             this.records.Add(record);
         }
 
+        public void deleteRecord(int index)
+        {
+            records.RemoveAt(index);
+        }
+
         public int sizeOfStructure()        //геттер дял размера списка с записями
         {
             return records.Count;
+        }
+
+        public int sizeOfHeaders()
+        {
+            return headers.Count;
         }
 
         public void setHeaders(string header)
@@ -48,6 +58,10 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
             return data_types;
         }
 
+        public List<DataRecord> getRecords()
+        {
+            return records;
+        }
         public DataRecord getRecord(int index)      //геттер для записи по индексу
         {
             try

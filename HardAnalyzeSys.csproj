@@ -135,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AuxiliaryForms\WarningForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataEntities\DataDisplays\CustomControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,7 +171,11 @@
     <Compile Include="AuxiliaryForms\LogForm.xaml.cs">
       <DependentUpon>LogForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AuxiliaryForms\WarningForm.xaml.cs">
+      <DependentUpon>WarningForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataEntities\BasicDataEntity.cs" />
+    <Compile Include="DataEntities\BlowoutsLibrary.cs" />
     <Compile Include="DataEntities\DataDisplays\CustomControl.xaml.cs">
       <DependentUpon>CustomControl.xaml</DependentUpon>
     </Compile>

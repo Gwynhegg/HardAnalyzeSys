@@ -32,6 +32,19 @@ namespace HardAnalyzeSys.DataEntities.DataStructures
             }
         }
 
+        public List<object> getStorage()
+        {
+            return data_storage;
+        }
+
+        public bool compareTo(DataRecord record)
+        {
+            List<object> temporal_storage = record.getStorage();
+            for (int i = 0; i < data_storage.Count; i++)
+                if (!temporal_storage[i].Equals(data_storage[i])) return false;
+            return true;
+        }
+
         public object this[int index]       //получить элемент по индексу в коллекции
         {
             get

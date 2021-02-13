@@ -140,3 +140,5 @@ F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\FillerForm
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\LogForm.baml
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\DataPreprocForm.g.cs
 F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\ActionForm\DataPreprocForm.baml
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\WarningForm.g.cs
+F:\Soft\Projects\AnalyzeSys\a\HardAnalyzeSys\obj\Debug\AuxiliaryForms\WarningForm.baml
