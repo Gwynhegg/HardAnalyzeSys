@@ -35,6 +35,7 @@
                         <ListBoxItem Content="Мода" Selected="getAllValues"/>
                         <ListBoxItem Content="Медиана" Selected="getNumericValues"/>
                         <ListBoxItem Content="Математическое ожидание" Selected="getNumericValues"/>
+                        <ListBoxItem Content="Дисперсия" Selected="getNumericValues"/>
                         <ListBoxItem Content="Среднеквадратичное отклонение" Selected="getNumericValues"/>
                         <ListBoxItem Content="Дополнить..."/>
                     </ListBox>

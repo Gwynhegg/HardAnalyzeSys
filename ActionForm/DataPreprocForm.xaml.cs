@@ -63,34 +63,37 @@ namespace HardAnalyzeSys.ActionForm
                     data = createSample();
             } else return;
 
-            if (clear_tuples.IsChecked==true) clearTuples();
-            clearBlowouts();
+            if (clear_tuples.IsChecked==true) data = clearTuples(data);
+            clearBlowouts(data);
+            Console.WriteLine();
 
         }
 
         private void create_new_Click(object sender, RoutedEventArgs e)
         {
+            DataEntities.DataStructure preprocessed_data = data;
             if (lb_titles.SelectedItems.Count != data.sizeOfHeaders())
-                data = createSample();
+                preprocessed_data = createSample();
 
-            if (clear_tuples.IsChecked == true) clearTuples();
-            clearBlowouts();
+            if (clear_tuples.IsChecked == true) preprocessed_data = clearTuples(preprocessed_data);
+            clearBlowouts(preprocessed_data);
+            Console.WriteLine();
         }
 
-        private void clearBlowouts()
+        private void clearBlowouts(DataEntities.DataStructure data)
         {
             switch (blowouts.Text.ToString())
             {
                 case "Нет": break;
-                case "Межквартильное расстояние": data = DataEntities.BlowoutsLibrary.interquartileDistance(data); break;
-                case "Критерий Шовене": break;
-                case "Критерий Грабса": break;
+                case "Межквартильное расстояние": data = DataEntities.BlowoutsLibrary.clearBlowouts(data, "interquartile distance"); break;
+                case "Критерий Шовене": data = DataEntities.BlowoutsLibrary.clearBlowouts(data,"criterion Chauvenet");  break;
+                case "Критерий Грабса":data = DataEntities.BlowoutsLibrary.clearBlowouts(data,"criterion Grabs"); break;
                 case "Критерий Пирса": break;
                 case "Критерий Диксона": break;
             }
         }
 
-        private void clearTuples()
+        private DataEntities.DataStructure clearTuples(DataEntities.DataStructure data)
         {
             int itera;
             for (int i = 0; i < data.sizeOfStructure(); i++)
@@ -99,6 +102,8 @@ namespace HardAnalyzeSys.ActionForm
                 while (itera < data.sizeOfStructure())
                     if (data[i].compareTo(data[itera])) data.deleteRecord(itera); else itera++; 
             }
+
+            return data;
         }
 
         private DataEntities.DataStructure createSample()

@@ -85,6 +85,7 @@ namespace HardAnalyzeSys.ActionForm
                 case "Мода": selected_quantity = "mode"; break;
                 case "Медиана": selected_quantity = "median"; break;
                 case "Математическое ожидание": selected_quantity = "math expectation"; break;
+                case "Дисперсия":selected_quantity = "dispersion"; break;
                 case "Среднеквадратичное отклонение": selected_quantity = "standart deviation"; break;
             }
         }

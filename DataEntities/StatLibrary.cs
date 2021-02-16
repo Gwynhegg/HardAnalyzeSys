@@ -24,7 +24,8 @@ namespace HardAnalyzeSys.DataEntities
                     case "square mean": return squareMean(parsed_set);
                     case "mode": return findMode(data_set);
                     case "median": return findMedian(parsed_set);
-                    case "math expectation": return mathExpectation(parsed_set);
+                    case "math expectation": return mathExpectation(parsed_set);        //ДОДЕЛАТЬ ВОЗМОЖНОСТЬ ВЫБОРКИ ВЕРОЯТНОСТЕЙ
+                    case "dispersion": return findDispersion(parsed_set);
                     case "standart deviation": return standartDeviation(parsed_set);
                 }
                 return -1;
@@ -41,13 +42,34 @@ namespace HardAnalyzeSys.DataEntities
            
         }
 
-        private static double standartDeviation(double[] data)      //ДОДЕЛАТЬ!
+        private static double findDispersion(double[] data)
         {
-            return -1;
+            double arithmetical_mean = arithmeticalMean(data);
+            double summary = 0;
+            foreach (double element in data) summary += Math.Pow(element - arithmetical_mean, 2);
+            if (data.Length > 30) summary /= data.Length - 1; else summary /= data.Length;
+            return summary;
         }
-        private static double mathExpectation(double[] data)    //ДОДЕЛАТЬ!
+        private static double standartDeviation(double[] data)   
         {
-            return -1;
+            return Math.Sqrt(findDispersion(data));
+        }
+
+        private static double mathExpectation(double[] data, double[] expectations)
+        {
+            for (int i = 0; i < expectations.Length; i++) 
+                if (expectations[i] <= 100 && expectations[i] > 1) expectations[i] /= 100;
+                else if (expectations[i] > 100) return -1;
+
+            double math_expectation = 0;
+            for (int i = 0; i < expectations.Length; i++) math_expectation += data[i] * expectations[i];
+
+            return math_expectation;
+        }
+
+        private static double mathExpectation(double[] data)
+        {
+            return arithmeticalMean(data);
         }
 
         private static double findMedian(double[] data)
@@ -62,11 +84,6 @@ namespace HardAnalyzeSys.DataEntities
             foreach (object e in data) if (frequencies.ContainsKey(e)) frequencies[e]++; else frequencies.Add(e, 0);
             return frequencies.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
         } 
-
-        private static string findMode(string[] data)   //ДОДЕЛАТЬ!
-        {
-            return "";
-        }
 
         private static double findMin(double[] data)
         {
@@ -109,6 +126,15 @@ namespace HardAnalyzeSys.DataEntities
             foreach (double e in data) summary += Math.Pow(e, 2);
             summary /= data.Length;
             return Math.Sqrt(summary);
+        }
+
+        public static double normalDistribution(double[] data, double x)
+        {
+            double dispersion = findDispersion(data);
+            double math_expectation = mathExpectation(data);
+            double p = 1 / Math.Sqrt(2 * Math.PI * dispersion) * Math.Pow(Math.E, -Math.Pow(x - math_expectation, 2) / (2 * Math.Pow(dispersion, 2)));
+            if (dispersion <= 0) return 1;
+            return 1 / Math.Sqrt(2 * Math.PI * dispersion) * Math.Pow(Math.E, -Math.Pow(x - math_expectation, 2) / (2 * Math.Pow(dispersion, 2)));
         }
     }
 }
